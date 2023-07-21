@@ -6,10 +6,10 @@ package main
 import "github.com/szymon676/betterdocker/mysql"
 
 func main() {
-    // Define options. Leave empty struct and they will automaticly fill with default settings
+	// Define options. Leave empty struct and they will automaticly fill with default settings
 	opts := &mysql.MySQLContainerOptions{}
 
-	// Rnitalize container struct
+	// Initialize container struct
 	container := mysql.NewMySQLContainer(opts)
 
 	// Run container
@@ -17,7 +17,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-    //stop container
-    defer container.Stop()
+	//stop container
+	defer container.Stop()
 }
 ```

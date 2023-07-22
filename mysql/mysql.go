@@ -50,6 +50,7 @@ func (m *MySQLContainer) setDefaultOptions() {
 		m.opts.RootPassword = defaultDatabasePassword
 	}
 }
+
 func (m *MySQLContainer) checkIfDockerIsRunning() error {
 	cmd := exec.Command("docker", "ps")
 	err := cmd.Run()
@@ -98,7 +99,7 @@ func (m *MySQLContainer) Run() error {
 	db := fmt.Sprintf("MYSQL_DATABASE=%s", strings.TrimSpace(m.opts.Database))
 	name := strings.TrimSpace(m.opts.Name)
 
-	cmd := exec.Command("docker", "run", "-d",
+	cmd := exec.Command("docker", "run",
 		"-p", port,
 		"--name", name,
 		"-e", rootPassword,

@@ -3,21 +3,22 @@ package main
 import (
 	"log"
 
-	"github.com/szymon676/betterdocker/mysql"
+	"github.com/szymon676/betterdocker/postgres"
 )
 
 func main() {
 	// Define options. Leave empty struct and they will automaticly fill with default settings
-	opts := &mysql.MySQLContainerOptions{}
+	opts := &postgres.PostgresContainerOptions{}
 
-	// Rnitalize container struct
-	container := mysql.NewMySQLContainer(opts)
+	// Initalize container struct
+	container := postgres.NewPostgresContainer(opts)
 
-	// Run container
+	// run container
 	err := container.Run()
 	if err != nil {
 		log.Fatal(err)
 	}
-	//stop container
+
+	// stop container
 	defer container.Stop()
 }
